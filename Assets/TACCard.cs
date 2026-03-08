@@ -261,13 +261,14 @@ namespace TAC
                     s2.Pieces[3] = checkPos + j;
                     yield return s2;
 
-                    for (var k = 1; k <= upTo; k++)
-                        if (k != j)
-                        {
-                            var s3 = s2.Clone();
-                            s3.Pieces[1] = checkPos + k;
-                            yield return s3;
-                        }
+                    if (state.Pieces[1] == null)
+                        for (var k = 1; k <= upTo; k++)
+                            if (k != j)
+                            {
+                                var s3 = s2.Clone();
+                                s3.Pieces[1] = checkPos + k;
+                                yield return s3;
+                            }
                 }
             }
         }
